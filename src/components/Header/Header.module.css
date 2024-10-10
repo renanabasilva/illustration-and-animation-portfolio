@@ -1,0 +1,55 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  color: var(--color0);
+  background-image: url(../../assets/stars_v1.png),
+    url(../../assets/tiles_v3.png);
+  background-attachment: scroll, fixed;
+  background-position: center, top;
+  background-size: 90%, cover;
+  background-repeat: no-repeat;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.banner h1 {
+  position: static;
+  flex: 1;
+  margin-top: 8px;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font0);
+  font-size: 2.2em;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (min-width: 768px) {
+  .banner {
+    margin: 30px auto 0 auto;
+    align-self: center;
+    height: 15vw;
+    width: 90vw;
+    min-height: 7em;
+    max-height: 11em;
+    max-width: 1600px;
+    border-radius: 16px;
+    background-image: url(../../assets/name_v1.png),
+      url(../../assets/stars_v1.png), url(../../assets/tiles_v3.png);
+    background-attachment: scroll, scroll, fixed;
+    background-position: center, center, top;
+    background-size: 40%, 80%, cover;
+  }
+
+  .banner h1 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .banner {
+    height: 20vw;
+  }
+}

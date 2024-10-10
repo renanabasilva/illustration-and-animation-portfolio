@@ -3,6 +3,10 @@ General
 -----------------------------------
 
 pt-br / en pages
+SEO
+  meta keywords
+  description
+  author
 
 
 -----------------------------------
