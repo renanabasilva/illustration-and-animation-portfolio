@@ -18,17 +18,19 @@
 .banner h1 {
   position: static;
   flex: 1;
-  margin-top: 8px;
   text-align: center;
-  color: #fff;
   font-family: var(--font0);
   font-size: 2.2em;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    padding-top: 30px;
+  }
+
   .banner {
-    margin: 30px auto 0 auto;
+    margin: 0 auto;
     align-self: center;
     height: 15vw;
     width: 90vw;
