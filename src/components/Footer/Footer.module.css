@@ -1,0 +1,41 @@
+.footerContainer {
+  background-color: var(--color2);
+  background-image: url(src/assets/tiles_v3.png);
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-size: cover;
+  text-align: center;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > p {
+    margin: 5px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    }
+}
+
+/* Social Media */
+
+.social {
+  > li {
+    display: inline-block;
+    
+    img {    
+      width: auto;
+      height: 40px;
+      margin: 0 8px;
+    }
+  }
+}
+
+.dev {
+  font-size: 0.8em;
+}

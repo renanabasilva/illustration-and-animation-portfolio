@@ -9,9 +9,9 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<Homepage />}></Route>
-          <Route path="projects" element={<Projects />}></Route>
-          <Route path="about" element={<About />}></Route>
+          <Route index path="/" element={<Homepage />}/>
+          <Route path="projects" element={<Projects />}/>
+          <Route path="about" element={<About />}/>
           <Route path="*" element={"404 - Page not found"} />
         </Route>
       </Routes>

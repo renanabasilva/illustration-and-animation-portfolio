@@ -15,6 +15,11 @@ Header
 
 H1 SEO better usage
 
+-----------------------------------
+Footer
+-----------------------------------
+
+Add links to youtube and discord
 
 -----------------------------------
 Homepage
