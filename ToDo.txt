@@ -13,13 +13,13 @@ SEO
 Header
 -----------------------------------
 
-H1 SEO better usage
+  H1 SEO better usage
 
 -----------------------------------
 Footer
 -----------------------------------
 
-Add links to youtube and discord
+  Add links to youtube and discord
 
 -----------------------------------
 Homepage
@@ -38,3 +38,8 @@ About
 -----------------------------------
 
 
+-----------------------------------
+404 - Not Found
+-----------------------------------
+
+  Fix not found page footer
