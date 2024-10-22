@@ -14,6 +14,10 @@ const pages: Array<{
     path: "/",
   },
   {
+    name: "storyboard",
+    path: "/storyboard",
+  },
+  {
     name: "illustration",
     path: "/illustration",
   },
@@ -54,15 +58,19 @@ const pages: Array<{
 
 const Menu = () => {
   return(
-    <nav className="menu">
+    <nav className={styles.menu}>
       {pages.map((page) => {
         if (page.submenu !== undefined) {
           return (
             <div key={page.name}>
-              <div tabIndex={0} role="button">
+              <div 
+                tabIndex={0} 
+                role="button"
+                className={styles.button}
+              >
                 {page.name}
               </div>
-              <ul>
+              <ul className={styles.submenu}>
                 {page.submenu.map((item) =>{
                   return (
                     <li key={item.name}>
