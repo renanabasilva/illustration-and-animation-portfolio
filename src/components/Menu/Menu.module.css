@@ -41,6 +41,12 @@
         font-weight: bold;
         color: var(--color0);
         background-color: var(--color2);
+
+        &::after {
+          background-image: url(src/assets/icons/arrow_white.png);
+          transform: rotate(180deg);
+          transition: all 0.3s linear;
+        }
       }
 
       .submenu {
@@ -52,6 +58,17 @@
 
     .button {
       border-radius: 13px 13px 0 0;
+    }
+
+    .button::after {
+      content: "";
+      background-image: url(src/assets/icons/arrow_black.png);
+      background-size: cover; 
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-left: 8px;
+      transition: all 0.3s linear;
     }
 
     .submenu {
