@@ -1,9 +1,11 @@
+import MasonryGallery from "../../components/MasonryGallery";
+
 const Homepage = () => {
-  return(
+  return (
     <>
-      <p>homepage</p>
+      <MasonryGallery />
     </>
-  )
-}
+  );
+};
 
 export default Homepage;

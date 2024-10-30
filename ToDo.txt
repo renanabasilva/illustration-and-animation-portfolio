@@ -2,6 +2,9 @@
 General
 -----------------------------------
 
+scrollbar moving header banner
+scrollbar styles
+GoTop button
 pt-br / en pages
 SEO
   meta keywords
@@ -20,12 +23,14 @@ Footer
 -----------------------------------
 
   Add links to youtube and discord
+  Add scale when hovering icons
 
 -----------------------------------
 Homepage
 -----------------------------------
 
-
+Gallery images optimization
+Create a script to generate a json file with images in the images folder
 
 -----------------------------------
 Projects
@@ -42,4 +47,3 @@ About
 404 - Not Found
 -----------------------------------
 
-  Fix not found page footer
