@@ -1,5 +1,7 @@
+import { useState } from "react";
 import styles from "./MasonryGallery.module.css";
 import GalleryImage from "../GalleryImage";
+import ImageModal from "../ImageModal";
 
 const homeGallery: Array<{
   path: string;
@@ -80,17 +82,52 @@ const homeGallery: Array<{
 ];
 
 const MasonryGallery = () => {
+  const [currentImageModal, setCurrentImageModal] = useState<number | null>(null);
+
+  const openModal = (index: number) => {
+    setCurrentImageModal(index);
+  };
+
+  const closeModal = () => {
+    setCurrentImageModal(null);
+  };
+
+  const nextImage = () => {
+    if (currentImageModal !== null){
+      setCurrentImageModal((currentImageModal + 1) % homeGallery.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (currentImageModal !== null){
+      setCurrentImageModal((currentImageModal - 1 + homeGallery.length) % homeGallery.length);
+    }
+  };
+
   return (
-    <div className={styles.masonryGallery}>
-      {homeGallery.map((galleryImg) => {
-        return (
-          <GalleryImage
-            key={galleryImg.path}
-            imagePath={galleryImg.path}
-            imageAlt={galleryImg.alt}
-          />
-        );
-      })}
+    <div>
+      <div className={styles.masonryGallery}>
+        {homeGallery.map((galleryImg, index) => {
+          return (
+            <GalleryImage
+              key={galleryImg.path}
+              imagePath={galleryImg.path}
+              imageAlt={galleryImg.alt}
+              openModal={() => openModal(index)}
+            />
+          );
+        })}
+      </div>
+
+      {currentImageModal !== null && (
+        <ImageModal 
+          src={homeGallery[currentImageModal].path}
+          alt={homeGallery[currentImageModal].alt}
+          onClose={closeModal}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
+      )}
     </div>
   );
 };

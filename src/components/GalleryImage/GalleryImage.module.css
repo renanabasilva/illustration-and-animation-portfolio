@@ -1,15 +1,23 @@
 .galleryItem {
   position: relative;
   display: inline-block;
+  width: 100%;
   margin-bottom: 1rem;
   background-color: rgb(226, 226, 226);
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.galleryItem img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
 }

@@ -32,6 +32,9 @@ Homepage
 Gallery images optimization
 Create a script to generate a json file with images in the images folder
 
+Modal
+  Add a link to the respective image project 
+
 -----------------------------------
 Projects
 -----------------------------------
