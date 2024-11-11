@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./ImageModal.module.css"
+import styles from "./ImageModal.module.css";
 
 interface ModalProps {
   src: string;
@@ -9,17 +9,23 @@ interface ModalProps {
   onPrev: () => void;
 }
 
-const ImageModal: React.FC<ModalProps> = ({ src, alt, onClose, onNext, onPrev }) => {
+const ImageModal: React.FC<ModalProps> = ({
+  src,
+  alt,
+  onClose,
+  onNext,
+  onPrev,
+}) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
-        case 'ArrowRight':
+        case "ArrowRight":
           onNext();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           onPrev();
           break;
-        case 'Escape':
+        case "Escape":
           onClose();
           break;
         default:
@@ -27,17 +33,19 @@ const ImageModal: React.FC<ModalProps> = ({ src, alt, onClose, onNext, onPrev })
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose, onNext, onPrev]);
 
-  return(
+  return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <img src={src} alt={alt} className={styles.modalImage}/>
-        <button className={styles.modalClose} onClick={onClose}>x</button>
+        <img src={src} alt={alt} className={styles.modalImage} />
+        <button className={styles.modalClose} onClick={onClose}>
+          x
+        </button>
         <button className={styles.modalPrev} onClick={onPrev}></button>
         <button className={styles.modalNext} onClick={onNext}></button>
       </div>
