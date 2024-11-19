@@ -1,8 +1,8 @@
-import styles from "./Header.module.css"
+import styles from "./Header.module.css";
 import Menu from "../Menu";
 
 const Header = () => {
-  return(
+  return (
     <header className={styles.header}>
       <div className={styles.banner}>
         <h1>Julie Passanezi</h1>
@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <Menu />
     </header>
-  )
-}
+  );
+};
 
 export default Header;
