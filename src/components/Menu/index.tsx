@@ -82,59 +82,83 @@ const Menu = () => {
   return (
     <>
       <button
-        className={`material-symbols-rounded ${styles.burger}`}
+        className={`material-symbols-rounded ${styles.burger} ${
+          showMenu ? styles.open : ""
+        }`}
         type="button"
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={() => {
+          setShowMenu(!showMenu);
+          setShowSubMenu(false);
+        }}
       >
         {!showMenu ? "menu" : "close"}
       </button>
-      <nav className={`${styles.menu} ${showMenu ? styles.open : ""}`}>
-        <ul>
-          {pages.map((page) => {
-            if (page.submenu !== undefined) {
+      <div
+        className={showMenu ? styles.menuOverlay : ""}
+        onClick={() => setShowMenu(!showMenu)}
+      >
+        <nav
+          className={`${styles.menu} ${showMenu ? styles.open : ""}`}
+          onClick={(e) => e.stopPropagation()}
+          aria-hidden={showMenu}
+        >
+          <ul>
+            {pages.map((page) => {
+              if (page.submenu !== undefined) {
+                return (
+                  <div key={page.name}>
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className={`${styles.button} ${
+                        showSubMenu ? styles.open : ""
+                      }`}
+                      onClick={() => setShowSubMenu(!showSubMenu)}
+                    >
+                      {page.name}
+                    </div>
+                    <ul
+                      className={`${styles.submenu} ${
+                        showSubMenu ? styles.open : ""
+                      }`}
+                    >
+                      {page.submenu.map((item) => {
+                        return (
+                          <li key={item.name}>
+                            <NavLink
+                              to={item.path ? item.path : ""}
+                              className={({ isActive }) =>
+                                isActive ? styles.active : ""
+                              }
+                              onClick={() => setShowMenu(!showMenu)}
+                            >
+                              {item.name}
+                            </NavLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              }
               return (
-                <div key={page.name}>
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className={styles.button}
-                    onClick={() => setShowSubMenu(!showSubMenu)}
+                <li key={page.name}>
+                  <NavLink
+                    to={page.path ? page.path : ""}
+                    className={({ isActive }) =>
+                      isActive ? styles.active : ""
+                    }
+                    key={page.name}
+                    onClick={() => setShowMenu(!showMenu)}
                   >
                     {page.name}
-                  </div>
-                  <ul className={`${styles.submenu} ${showSubMenu ? styles.open : ""}`}>
-                    {page.submenu.map((item) => {
-                      return (
-                        <li key={item.name}>
-                          <NavLink
-                            to={item.path ? item.path : ""}
-                            className={({ isActive }) =>
-                              isActive ? styles.active : ""
-                            }
-                          >
-                            {item.name}
-                          </NavLink>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+                  </NavLink>
+                </li>
               );
-            }
-            return (
-              <li key={page.name}>
-                <NavLink
-                  to={page.path ? page.path : ""}
-                  className={({ isActive }) => (isActive ? styles.active : "")}
-                  key={page.name}
-                >
-                  {page.name}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+            })}
+          </ul>
+        </nav>
+      </div>
     </>
   );
 };

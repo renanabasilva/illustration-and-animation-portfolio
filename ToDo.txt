@@ -17,6 +17,7 @@ Header
 -----------------------------------
 
   H1 SEO better usage
+  Create/adjust mobile title
 
 -----------------------------------
 Footer
