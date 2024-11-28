@@ -1,96 +1,269 @@
-.menu {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.2rem;
-  margin: 1.2rem 0;
-  text-transform: uppercase;
-  font-size: 1.05rem;
+.burger {
+  position: absolute;
+  top: 2.5rem;
+  right: 2rem;
+  z-index: 20;
+  border: none;
+  color: var(--color0);
+  background-color: transparent;
+  font-size: 2.5em;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-out;
 
-  .active {
-    font-weight: bold;
-  }
-
-  a,
-  .button {
-    display: block;
-    position: relative;
-    padding: 10px 5px 5px;
-    text-decoration: none;
-    color: var(--color1);
-    min-width: 120px;
-    text-align: center;
+  &:hover {
     cursor: pointer;
-    border-radius: 13px;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      background-color: var(--color2);
-      color: var(--color0);
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
+    transition: all 0.2s ease-out;
   }
 
-  > div {
-    position: relative;
+  &.open {
+    position: fixed;
+  }
+}
 
-    &:hover {
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: all 0.3s ease-out;
+}
+
+.menu {
+  visibility: hidden;
+  opacity: 0;
+  z-index: 10;
+  position: fixed;
+  top: -300%;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color0);
+  background-color: var(--color2);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease-in;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    transition: all 0.5s ease-out;
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.8rem;
+    padding: 2.5rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+
+    a,
+    .button {
+      color: var(--color0);
+      text-decoration: none;
+    }
+
+    > div {
+      position: relative;
+      text-align: left;
+      cursor: pointer;
+
       .button {
-        border-radius: 13px 13px 0 0;
-        font-weight: bold;
-        color: var(--color0);
-        background-color: var(--color2);
-
         &::after {
+          content: "";
           background-image: url(src/assets/icons/arrow_white.png);
+          background-size: cover;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin-left: 8px;
+          transition: all 0.3s linear;
+        }
+
+        &.open::after {
           transform: rotate(180deg);
           transition: all 0.3s linear;
         }
       }
 
       .submenu {
-        visibility: visible;
-        opacity: 1;
-        transition: all 0.2s ease-in-out;
-      }
-    }
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        overflow: hidden;
+        max-height: 0;
+        margin: 0 0 0 1.5rem;
+        padding-left: 0;
+        border-radius: 0 0 13px 13px;
+        background-color: var(--color2);
+        transition: all 0.3s ease-in-out;
 
-    .button {
-      border-radius: 13px 13px 0 0;
-    }
+        &.open {
+          max-height: 800px;
+          transition: all 0.5s ease-in-out;
+        }
 
-    .button::after {
-      content: "";
-      background-image: url(src/assets/icons/arrow_black.png);
-      background-size: cover; 
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin-left: 8px;
-      transition: all 0.3s linear;
-    }
+        & li:first-child {
+          margin-top: 1.5rem;
+        }
 
-    .submenu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1;
-      visibility: hidden;
-      opacity: 0;
-      margin: 0;
-      padding-left: 0;
-      border-radius: 0 0 13px 13px;
-      background-color: var(--color2);
-      transition: all 0.2s ease-in-out;
-
-      a {
-        color: var(--color0);
-
-        &:hover {
-          background-color: #6ca4a7 !important;
+        a {
+          font-size: 1.4rem;
+          display: block;
         }
       }
     }
   }
 }
+
+/* @media screen and (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.2rem;
+    margin: 1.2rem 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    font-weight: normal;
+    color: var(--color1);
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    > ul {
+      flex-direction: row;
+      gap: 0.2rem;
+      padding: 0;
+      margin: 1.2rem 0;
+
+      .active {
+        font-weight: bold;
+      }
+
+      a,
+      .button {
+        display: block;
+        position: relative;
+        padding: 10px 5px 5px;
+        color: var(--color1);
+        min-width: 120px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 13px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: var(--color2);
+          color: var(--color0);
+          font-weight: bold;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+
+      > div {
+        position: relative;
+
+        &:hover {
+          .button {
+            border-radius: 13px 13px 0 0;
+            font-weight: bold;
+            color: var(--color0);
+            background-color: var(--color2);
+
+            &::after {
+              background-image: url(src/assets/icons/arrow_white.png);
+              transform: rotate(180deg);
+              transition: all 0.3s linear;
+            }
+          }
+
+          .submenu {
+            visibility: visible;
+            opacity: 1;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+
+        .button {
+          border-radius: 13px 13px 0 0;
+        }
+
+        .button::after {
+          content: "";
+          background-image: url(src/assets/icons/arrow_black.png);
+          background-size: cover;
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          margin-left: 8px;
+          transition: all 0.3s linear;
+        }
+
+        .submenu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1;
+          visibility: hidden;
+          opacity: 0;
+          margin: 0;
+          padding-left: 0;
+          border-radius: 0 0 13px 13px;
+          background-color: var(--color2);
+          transition: all 0.2s ease-in-out;
+
+          a {
+            color: var(--color0);
+
+            &:hover {
+              background-color: #6ca4a7 !important;
+            }
+          }
+        }
+      }
+    }
+  } */
+
+/* @media screen and (min-width: 768px) {
+  .menu {
+    flex-direction: row;
+    justify-content: space-evenly;
+    a,
+    .button {
+      min-width: fit-content;
+    }
+  }
+} */
+/* 
+@media screen and (min-width: 992px) {
+  .menu {
+    justify-content: center;
+
+    a,
+    .button {
+      min-width: 120px;
+    }
+  }
+} */
