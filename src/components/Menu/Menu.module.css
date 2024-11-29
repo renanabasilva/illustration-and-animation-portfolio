@@ -109,11 +109,11 @@
         padding-left: 0;
         border-radius: 0 0 13px 13px;
         background-color: var(--color2);
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in-out;
 
         &.open {
           max-height: 800px;
-          transition: all 0.5s ease-in-out;
+          transition: all 0.3s ease-in-out;
         }
 
         & li:first-child {
@@ -129,21 +129,21 @@
   }
 }
 
-/* @media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .burger {
     display: none;
   }
 
   .menu {
+    visibility: visible;
+    opacity: 1;
     position: static;
     display: flex;
-    flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     gap: 0.2rem;
     margin: 1.2rem 0;
     padding: 0;
-    text-transform: uppercase;
     font-size: 1.05rem;
     font-weight: normal;
     color: var(--color1);
@@ -151,9 +151,12 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
+    overflow-y: visible;
 
     > ul {
       flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
       gap: 0.2rem;
       padding: 0;
       margin: 1.2rem 0;
@@ -168,7 +171,7 @@
         position: relative;
         padding: 10px 5px 5px;
         color: var(--color1);
-        min-width: 120px;
+        min-width: fit-content;
         text-align: center;
         cursor: pointer;
         border-radius: 13px;
@@ -177,14 +180,19 @@
         &:hover {
           background-color: var(--color2);
           color: var(--color0);
-          font-weight: bold;
           transition: all 0.2s ease-in-out;
         }
       }
 
-      > div {
-        position: relative;
+      .button {
+        min-width: 120px;
+      }
 
+      ul a {
+        min-width: 120px;
+      }
+
+      > div {
         &:hover {
           .button {
             border-radius: 13px 13px 0 0;
@@ -208,17 +216,12 @@
 
         .button {
           border-radius: 13px 13px 0 0;
-        }
 
-        .button::after {
-          content: "";
-          background-image: url(src/assets/icons/arrow_black.png);
-          background-size: cover;
-          display: inline-block;
-          width: 12px;
-          height: 12px;
-          margin-left: 8px;
-          transition: all 0.3s linear;
+          &::after {
+            background-image: url(src/assets/icons/arrow_black.png);
+            width: 12px;
+            height: 12px;
+          }
         }
 
         .submenu {
@@ -226,16 +229,20 @@
           top: 100%;
           left: 0;
           z-index: 1;
+          gap: 0.2rem;
           visibility: hidden;
           opacity: 0;
+          overflow: visible;
+          max-height: none;
           margin: 0;
-          padding-left: 0;
-          border-radius: 0 0 13px 13px;
-          background-color: var(--color2);
-          transition: all 0.2s ease-in-out;
+
+          & li:first-child {
+            margin-top: 0;
+          }
 
           a {
             color: var(--color0);
+            font-size: 1.05rem;
 
             &:hover {
               background-color: #6ca4a7 !important;
@@ -244,26 +251,23 @@
         }
       }
     }
-  } */
+  }
+}
 
-/* @media screen and (min-width: 768px) {
+@media (min-width: 992px) {
   .menu {
-    flex-direction: row;
-    justify-content: space-evenly;
-    a,
-    .button {
-      min-width: fit-content;
+    
+    > ul {
+      justify-content: center;
+    
+      a,
+      .button {
+        min-width: 120px;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
     }
   }
-} */
-/* 
-@media screen and (min-width: 992px) {
-  .menu {
-    justify-content: center;
-
-    a,
-    .button {
-      min-width: 120px;
-    }
-  }
-} */
+}
