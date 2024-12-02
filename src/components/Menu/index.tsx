@@ -62,12 +62,14 @@ const Menu = () => {
     window.innerWidth >= 768 ? true : false
   );
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      setWindowWidth(window.innerWidth)
+      if (windowWidth >= 768) {
         setShowMenu(true);
-      } else if (window.innerWidth <= 768) {
+      } else if (windowWidth <= 768) {
         setShowMenu(false);
       }
     };
@@ -83,7 +85,7 @@ const Menu = () => {
     <>
       <button
         className={`material-symbols-rounded ${styles.burger} ${
-          showMenu ? styles.open : ""
+          showMenu && windowWidth <= 768 ? styles.open : ""
         }`}
         type="button"
         onClick={() => {
@@ -94,11 +96,11 @@ const Menu = () => {
         {!showMenu ? "menu" : "close"}
       </button>
       <div
-        className={showMenu ? styles.menuOverlay : ""}
+        className={showMenu && windowWidth <= 768 ? styles.menuOverlay : ""}
         onClick={() => setShowMenu(!showMenu)}
       >
         <nav
-          className={`${styles.menu} ${showMenu ? styles.open : ""}`}
+          className={`${styles.menu} ${showMenu && windowWidth <= 768 ? styles.open : ""}`}
           onClick={(e) => e.stopPropagation()}
           aria-hidden={showMenu}
         >
@@ -111,7 +113,7 @@ const Menu = () => {
                       tabIndex={0}
                       role="button"
                       className={`${styles.button} ${
-                        showSubMenu ? styles.open : ""
+                        showSubMenu && windowWidth <= 768 ? styles.open : ""
                       }`}
                       onClick={() => setShowSubMenu(!showSubMenu)}
                     >
@@ -119,7 +121,7 @@ const Menu = () => {
                     </div>
                     <ul
                       className={`${styles.submenu} ${
-                        showSubMenu ? styles.open : ""
+                        showSubMenu && windowWidth <= 768 ? styles.open : ""
                       }`}
                     >
                       {page.submenu.map((item) => {
