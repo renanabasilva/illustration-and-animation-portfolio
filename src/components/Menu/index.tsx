@@ -67,7 +67,7 @@ const Menu = () => {
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
-      if (windowWidth >= 768) {
+      if (windowWidth > 768) {
         setShowMenu(true);
       } else if (windowWidth <= 768) {
         setShowMenu(false);
@@ -79,7 +79,7 @@ const Menu = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [windowWidth]);
 
   return (
     <>
